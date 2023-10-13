@@ -25,9 +25,12 @@ struct CalculatorView: View {
             Text(err).foregroundStyle(.red).padding()
             
             if(!image.isEmpty){
-                Image("\(image.capitalized)")
+                VStack{
+                    Text("\(image.capitalized)")
+                    Image("\(image.capitalized)")
+                }.padding()
             }
-            
+
             
         }
     }
@@ -37,6 +40,11 @@ struct CalculatorView: View {
         guard let year = Int(year) else {
             err = "Enter a valid value"
             image = ""
+            return
+        }
+        
+        if(year <= 1900){
+            err = "Make sure the value is above 1900"
             return
         }
         
