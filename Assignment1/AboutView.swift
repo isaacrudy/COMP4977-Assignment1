@@ -12,6 +12,7 @@ struct AboutView: View {
         VStack {
             Text("About us").font(.largeTitle)
             Text("Isaac Rudy: A01261260")
+            Text("Pahul Sidhu: A01310077")
         }
     }
 }

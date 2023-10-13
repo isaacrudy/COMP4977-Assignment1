@@ -8,14 +8,48 @@
 import SwiftUI
 
 struct CalculatorView: View {
+    @State var year : String
+    @State var err : String
+    @State var image : String
+    var animals : [String] = ["Rat", "Ox", "Tiger", "Rabbit", "Dragon", "Snake", "Horse", "Goat", "Monkey", "Rooster", "Dog", "Pig"]
+    
     var body: some View {
         VStack {
             Text("Calculator").font(.largeTitle)
-            TextEditor(text: .constant("Please enter a Year")).frame(height: 50).border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/).padding()
+            TextField("Year", text : $year).padding()
+            
+            Button(action: getYear) {
+                Text("Get")
+            }.buttonStyle(.bordered)
+            
+            Text(err).foregroundStyle(.red).padding()
+            
+            if(!image.isEmpty){
+                Image("\(image.capitalized)")
+            }
+            
+            
         }
+    }
+    
+    func getYear() {
+        
+        guard let year = Int(year) else {
+            err = "Enter a valid value"
+            image = ""
+            return
+        }
+        
+        err = ""
+        // Calculate the modulus with 12
+        let modulus = year % 12
+        
+        image = animals[modulus]
+        
+        
     }
 }
 
 #Preview {
-    CalculatorView()
+    CalculatorView(year: "", err: "", image: "")
 }

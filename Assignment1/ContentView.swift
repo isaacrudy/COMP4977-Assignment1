@@ -14,7 +14,7 @@ struct ContentView: View {
                 Image(systemName: "pawprint.circle")
                 Text("Zodiacs")
             }
-            CalculatorView().tabItem {
+            CalculatorView(year: "", err: "", image: "").tabItem {
                 Image(systemName: "equal.circle")
                 Text("Calculator")
             }
